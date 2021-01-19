@@ -1,28 +1,37 @@
 package com.example.singleactivityapp
 
-class MyStack() {
+import java.util.*
+
+class MyStack {
 
     /** Initialize your data structure here. */
-    
+    private val firstQueue = LinkedList<Int>()
+    private val secondQueue = LinkedList<Int>()
 
     /** Push element x onto stack. */
     fun push(x: Int) {
-        
+        while (!firstQueue.isEmpty())
+            secondQueue.add(firstQueue.pop())
+        firstQueue.push(x)
+        while (!secondQueue.isEmpty())
+            firstQueue.add(secondQueue.pop())
     }
 
     /** Removes the element on top of the stack and returns that element. */
     fun pop(): Int {
-        return 0
+        return firstQueue.pop()
     }
 
     /** Get the top element. */
     fun top(): Int {
-        return 0
+        return firstQueue.peek() ?: -1
     }
 
     /** Returns whether the stack is empty. */
     fun empty(): Boolean {
-        return true
+        if (firstQueue.isEmpty() && secondQueue.isEmpty())
+            return true
+        return false
     }
 
 }

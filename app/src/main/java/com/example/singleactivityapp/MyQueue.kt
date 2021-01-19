@@ -2,7 +2,7 @@ package com.example.singleactivityapp
 
 import java.util.*
 
-class MyQueue() {
+class MyQueue {
 
     /** Initialize your data structure here. */
     private val firstStack = Stack<Int>()
